@@ -1,4 +1,4 @@
-const noticias = [
+const arregloNoticia = [
         {
             id: 1,
             title: 'news 111111111 title',
@@ -19,12 +19,12 @@ const incrementarId = () => {
 function getNoticia(req, res) {
     
     if (req.params.id) {
-        const noticia = noticias.find(noticia => noticia.id == req.params.id);
+        const noticiaEncontrada = arregloNoticia.find(noticiaIter => noticiaIter.id == req.params.id);
         //console.log(req.params);
-        return noticia ?
+        return noticiaEncontrada ?
             res.status(200).json({
                 message: 'success',
-                noticia: noticia,
+                noticia: noticiaEncontrada,
             }) :
             res.status(404).json({
                 message: 'not found',
@@ -40,7 +40,7 @@ function getNoticias(req, res) {
     
     res.status(200).json({
         message: 'success',
-        noticias,
+        arregloNoticia,
     });
 }
 
@@ -55,7 +55,7 @@ function addNoticia(req, res) {
         img
     }
     incrementarId();
-    noticias.push(noticiaNueva);
+    arregloNoticia.push(noticiaNueva);
     res.status(200).json({
         message: 'success',
         noticiaNueva,
@@ -64,14 +64,14 @@ function addNoticia(req, res) {
 }
 function deleteNoticia(req, res) {
     if (req.params.id) {
-        const noticia = noticias.find(noticia => noticia.id == req.params.id);
+        const noticiaAEliminar = arregloNoticia.find(noticiaIter => noticiaIter.id == req.params.id);
         //console.log(req.params);
         if (noticia) {
-            const indiceAEliminar = noticias.indexOf(noticia);
-            noticias.splice(indiceAEliminar, 1);
+            const indiceAEliminar = arregloNoticia.indexOf(noticiaAEliminar);
+            arregloNoticia.splice(indiceAEliminar, 1);
             res.status(200).json({
                 message: 'success',
-                eliminiado: noticia,
+                eliminado: noticiaAEliminar,
             })
         } else {
             res.status(404).json({
@@ -86,16 +86,16 @@ function deleteNoticia(req, res) {
 }
 function updateNoticia(req, res) {
     if (req.params.id) {
-        const noticia = noticias.find(noticia => noticia.id == req.params.id);
+        const noticiaAActualizar = arregloNoticia.find(noticiaIter => noticiaIter.id == req.params.id);
         //console.log(req.params);
         if (noticia) {
             const { title, content, img } = req.body;
-            noticia.title = title;
-            noticia.content = content;
-            noticia.img = img;
+            noticiaAActualizar.title = title;
+            noticiaAActualizar.content = content;
+            noticiaAActualizar.img = img;
             res.status(200).json({
                 message: 'success',
-                noticia: noticia,
+                noticia: noticiaAActualizar,
             })
         } else {
             res.status(404).json({
