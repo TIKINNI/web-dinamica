@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <title> Martes 20/10/2020 - Kiosco A Diario</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <button id="up-button">&#916;</button>
+    <div class="fondo-mate">
+        <%- include('partials/navegacion.html')%>
+
+        <div class="tabla-noticias-container">
+            <table class="tabla-noticias">
+                <thead>
+                    <th>Más Leídas del Martes 20/10</th>
+                    <th>Visitas</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-nro="1">La golpeó y la arrastró por el asfalto para robarle la bici en el centro</td>
+                        <td>1650</td>
+                    </tr>
+                    <tr>
+                        <td data-nro="2">Con demoras, el Gobierno lanza el plan para comprar motos en 48 cuotas fijas</td>
+                        <td>1353</td>
+                    </tr>
+                    <tr>
+                        <td data-nro="3">Alfonso Prat Gay: "Mientras no haya confianza, todas las medidas van a ser insuficientes"</td>
+                        <td>1252</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="noticias">
+            <div class="noticia" data-nro="1">
+                <div class="noticia-head">
+                    <p class="noticia-categoria">Diario La Mañana Neuquén</p>
+                    <h1>La golpeó y la arrastró por el asfalto para robarle la bici en el centro
+                    </h1>
+                    <h2>Sucedió en Área Centro Sur a plena luz del día. La víctima terminó con importantes golpes y raspones. Afortunadamente, la ayudaron los vecinos.</h2>
+                </div>
+                <div class="noticia-content">
+                    <img src="./imagenes/20-10-2020 Martes/01.jpg" alt="">
+                </div>
+                <br>
+                <a href="" target="_blank">Click para
+                    leer noticia completa</a>
+            </div>
+            <div class="noticia" data-nro="2">
+                <div class="noticia-head">
+                    <p class="noticia-categoria">Diario Clarín</p>
+                    <h1>Con demoras, el Gobierno lanza el plan para comprar motos en 48 cuotas fijas
+                    </h1>
+                    <h2>El Nación financiará 34 modelos de hasta $200.000 a tasas subsidiadas. Guía de marcas, precios y cómo se solicita.</h2>
+                </div>
+                <div class="noticia-content">
+                    <img src="./imagenes/20-10-2020 Martes/02.jpg" alt="">
+                </div>
+                <br>
+                <a href="" target="_blank">Click para
+                    leer noticia completa</a>
+            </div>
+            <div class="noticia" data-nro="3">
+                <div class="noticia-head">
+                    <p class="noticia-categoria">Diario La Nación</p>
+                    <h1>Alfonso Prat Gay: "Mientras no haya confianza, todas las medidas van a ser insuficientes"
+                    </h1>
+                    <h2>Alfonso Prat Gay, expresidente del Banco Central, se refirió hoy a la situación económica del país y aseguró: "Mientras no haya confianza, todas las medidas van a ser insuficientes".</h2>
+                </div>
+                <div class="noticia-content">
+                    <img src="./imagenes/20-10-2020 Martes/03.jpg" alt="">
+                </div>
+                <br>
+                <a href="" target="_blank">Click para
+                    leer noticia completa</a>
+            </div>
+        </div>
+        <footer class="pie">Derechos Reservados. 2020.</footer>
+    </div><!-- /FONDO MATE -->
+</body>
+<script src="./scroller.js"></script>
+
+</html>

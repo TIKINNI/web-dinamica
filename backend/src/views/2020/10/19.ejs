@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <title> Lunes 19/10/2020 - Kiosco A Diario</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <button id="up-button">&#916;</button>
+    <div class="fondo-mate">
+        
+        <%- include('partials/navegacion.html')%>
+
+        <div class="tabla-noticias-container">
+            <table class="tabla-noticias">
+                <thead>
+                    <th>Más Leídas del Lunes 19/10</th>
+                    <th>Visitas</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-nro="1">Coronavirus: el lunes abrió con 275 nuevos casos y Neuquén superó los 19 mil
+                            contagios</td>
+                        <td>1650</td>
+                    </tr>
+                    <tr>
+                        <td data-nro="2">El Gobierno bonaerense no exigirá testeos de coronavirus para la temporada de
+                            verano: cuáles serán los requisitos</td>
+                        <td>1353</td>
+                    </tr>
+                    <tr>
+                        <td data-nro="3">Detuvieron a cuatro mapuches por ocupar un campo y tener sitiada a una familia
+                            en Bariloche</td>
+                        <td>1252</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="noticias">
+            <div class="noticia" data-nro="1">
+                <div class="noticia-head">
+                    <p class="noticia-categoria">Diario La Mañana Neuquén</p>
+                    <h1>Coronavirus: el lunes abrió con 275 nuevos casos y Neuquén superó los 19 mil contagios
+                    </h1>
+                    <h2>El ministerio de Salud informó que 248 infectados en la capital provincial y 10 en Centenario.
+                    </h2>
+                </div>
+                <div class="noticia-content">
+                    <img src="imagenes/19-10-2020 Lunes/01.jpg"
+                        alt="">
+                </div>
+                <br>
+                <a href="https://www.lmneuquen.com/coronavirus-el-lunes-abrio-275-nuevos-casos-y-neuquen-supero-los-19-mil-contagios-n740592"
+                    target="_blank">Click para
+                    leer noticia completa</a>
+            </div>
+            <div class="noticia" data-nro="2">
+                <div class="noticia-head">
+                    <p class="noticia-categoria">Diario Clarín</p>
+                    <h1>El Gobierno bonaerense no exigirá testeos de coronavirus para la temporada de verano: cuáles
+                        serán los requisitos
+                    </h1>
+                    <h2>También anunció que la temporada se extenderá desde el 1 de diciembre al 4 de abril. No habrá
+                        actividades artísticas y culturales en espacios cerrados.</h2>
+                </div>
+                <div class="noticia-content">
+                    <img src="imagenes/19-10-2020 Lunes/02.jpg"
+                        alt="">
+                </div>
+                <br>
+                <a href="https://www.clarin.com/politica/gobierno-bonaerense-exigira-testeos-coronavirus-temporada-verano-requisitos_0_k2IMvq4HX.html"
+                    target="_blank">Click para
+                    leer noticia completa</a>
+            </div>
+            <div class="noticia" data-nro="3">
+                <div class="noticia-head">
+                    <p class="noticia-categoria">Diario La Nación</p>
+                    <h1>Detuvieron a cuatro mapuches por ocupar un campo y tener sitiada a una familia en Bariloche
+                    </h1>
+                    <h2>La Justicia de Río Negro ordenó el desalojo, que comenzó el jueves pasado.</h2>
+                </div>
+                <div class="noticia-content">
+                    <img src="imagenes/19-10-2020 Lunes/03.jpg" alt="">
+                </div>
+                <br>
+                <a href="https://www.lanacion.com.ar/politica/buscan-desalojar-mapuches-tienen-cercada-familia-bariloche-nid2484096"
+                    target="_blank">Click para
+                    leer noticia completa</a>
+            </div>
+        </div>
+        <footer class="pie">Derechos Reservados. 2020.</footer>
+    </div><!-- /FONDO MATE -->
+</body>
+<script src="./scroller.js"></script>
+
+</html>
