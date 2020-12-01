@@ -17,7 +17,6 @@ const incrementarId = () => {
     next_id++;
 }
 function getNoticia(req, res) {
-    
     if (req.params.id) {
         const noticia = noticias.find(noticia => noticia.id == req.params.id);
         //console.log(req.params);
@@ -37,7 +36,8 @@ function getNoticia(req, res) {
 }
 
 function getNoticias(req, res) {
-    
+    //console.log("HOLA!");
+    //console.log(req.headers);
     res.status(200).json({
         message: 'success',
         noticias,
@@ -64,14 +64,14 @@ function addNoticia(req, res) {
 }
 function deleteNoticia(req, res) {
     if (req.params.id) {
-        const noticia = noticias.find(noticia => noticia.id == req.params.id);
+        const noticia = noticias.find(noticia => noticia.id == req.params.id );
         //console.log(req.params);
         if (noticia) {
             const indiceAEliminar = noticias.indexOf(noticia);
             noticias.splice(indiceAEliminar, 1);
             res.status(200).json({
                 message: 'success',
-                eliminiado: noticia,
+                eliminado: noticia,
             })
         } else {
             res.status(404).json({

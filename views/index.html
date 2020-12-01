@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css" />
+    <title>Noticias</title>
+</head>
+<body>
+    <button id="up-button">&#916;</button>
+    <div class="fondo-mate">
+        <div class="cajita">
+            <h2>Kiosko</h2>
+            <h1>A-Diario</h1>
+            <p>Un sitio donde se pueden leer diarios</p>
+        </div>
+        <div class="navegacion">
+            <p class="title">Navegacion</p>
+            <div class="menu">
+                <div class="menu-item">
+                    <a href="home.html">INICIO</a>
+                </div>
+                <div class="menu-item">
+                    <a href="lunes 19-10-2020.html">Lunes 19/10</a>
+                </div>
+                <div class="menu-item seleccionado">
+                    <a href="martes 20-10-2020.html">Martes 20/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="miercoles 21-10-2020.html">Miercoles 21/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="jueves 22-10-2020.html">Jueves 22/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="viernes 23-10-2020.html">Viernes 23/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="sabado 24-10-2020.html">Sabado 24/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="domingo 25-10-2020.html">Domingo 25/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="lunes 26-10-2020.html">Lunes 26/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="martes 27-10-2020.html">Martes 27/10</a>
+                </div>
+                <div class="menu-item">
+                    <a href="miercoles 28-10-2020.html">Miercoles 28/10</a>
+                </div>
+            </div>
+        </div>
+        <div class="tabla-noticias-container">
+            <table class="tabla-noticias">
+                <thead>
+                    <th>Mas Leidas del (Ingresar Dia)</th>
+                    <th>Visitas</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-nro="1">Nombre noticia 1</td>
+                        <td>1650</td>
+                    </tr>
+                    <tr>
+                        <td data-nro="2">Nombre noticia 2</td>
+                        <td>1353</td>
+                    </tr>
+                    <tr>
+                        <td data-nro="3">Nombre noticia 3</td>
+                        <td>1252</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button id="me" onclick="crearNoticia()">Nueva Noticia Vacia</button>
+        <div id="main-noticias-container" class="noticias">
+            
+            <div class="noticia" data-nro="1">
+                <div class="noticia-head">
+                    <p class="noticia-categoria">Diario La Mañana Neuquén</p>
+                    <h1>Titulo
+                    </h1>
+                    <h2>Subtitulo</h2>
+                </div>
+                <div class="noticia-content">
+                    <p>
+                        Un parrafo
+                    </p>
+                    <img src="./imagenes/" alt="">
+                    <p>
+                        Otro parrafo
+                    </p>
+                </div>
+                <br>
+                <a href="" target="_blank">Click para
+                    leer noticia completa</a>
+            </div>
+            <div class="noticia" data-nro="2">
+                <div class="noticia-head">
+                    <p class="noticia-categoria">Diario Clarín</p>
+                    <h1>Titulo
+                    </h1>
+                    <h2>Subtitulo</h2>
+                </div>
+                <div class="noticia-content">
+                    <p>
+                        Un parrafo
+                    </p>
+                    <img src="./imagenes/" alt="">
+                    <p>
+                        Otro parrafo
+                    </p>
+                </div>
+                <br>
+                <a href="" target="_blank">Click para
+                    leer noticia completa</a>
+            </div>
+            <div class="noticia" data-nro="3">
+                <div class="noticia-head">
+                    <p class="noticia-categoria">Diario La Nación</p>
+                    <h1>Titulo
+                    </h1>
+                    <h2>Subtitulo</h2>
+                </div>
+                <div class="noticia-content">
+                    <p>
+                        Un parrafo
+                    </p>
+                    <img src="./imagenes/" alt="">
+                    <p>
+                        Otro parrafo
+                    </p>
+                </div>
+                <br>
+                <a href="" target="_blank">Click para
+                    leer noticia completa</a>
+            </div>
+        </div>
+        <footer class="pie">Derechos Reservados. 2020.</footer>
+    </div><!-- /FONDO MATE -->
+</body>
+<script src="js/scroller.js"></script>
+<script>
+    const buscarNoticias = async ()=> {
+        let noticias = await fetch('http://localhost:5000/noticias');
+        noticias = await noticias.json();
+        console.log(noticias.noticias);
+    }
+    
+
+    const crearNoticia = () => {
+        const newNoticia = document.createElement("div");
+        newNoticia.className = "noticia";
+        const noticiaHead = document.createElement("div");
+        noticiaHead.className = "noticia-head";
+        const noticiaHeadCategoria = document.createElement("p");
+        noticiaHeadCategoria.className = "noticia-categoria";
+        noticiaHeadCategoria.appendChild(document.createTextNode('Example Category'));
+        const noticiaHeadH1 = document.createElement("h1");
+        noticiaHeadH1.appendChild(document.createTextNode('Example Title'));
+        const noticiaHeadH2 = document.createElement("h2");
+        noticiaHeadH2.appendChild(document.createTextNode('Example Subtitle'));
+        noticiaHead.appendChild(noticiaHeadCategoria);
+        noticiaHead.appendChild(noticiaHeadH1);
+        noticiaHead.appendChild(noticiaHeadH2);
+        newNoticia.appendChild(noticiaHead);
+
+        const noticiaContent = document.createElement("div");
+        noticiaContent.className = "noticia-content";
+        const noticiaContentImg = document.createElement("img");
+        noticiaContentImg.setAttribute('alt', 'News Image');
+        const noticiaContentP = document.createElement("p");
+        noticiaContentP.appendChild(document.createTextNode('lorem ipsum 80'));
+        noticiaContent.appendChild(noticiaContentImg);
+        noticiaContent.appendChild(noticiaContentP);
+        newNoticia.appendChild(noticiaContent);
+
+        document.getElementById('main-noticias-container').appendChild(newNoticia);
+    }
+</script>
+</html>
