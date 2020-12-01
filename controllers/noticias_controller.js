@@ -1,9 +1,10 @@
 const noticias = [
         {
             id: 1,
-            title: 'news 111111111 title',
-            content: 'news 1 content',
-            img: 'news 1 img',
+            titulo: 'Volvio a subir el dolar',
+            subtitulo: 'Otra vez se fue al carajo todo',
+            contenido: 'La gente pide que les devuelvan la guita, terrible bardo.',
+            img: 'gente pidiendo plata',
         },
         {
             id: 2,

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/estilos.css" />
     <title>Noticias</title>
 </head>
+
 <body>
     <button id="up-button">&#916;</button>
     <div class="fondo-mate">
@@ -74,9 +76,9 @@
                 </tbody>
             </table>
         </div>
-        <button id="me" onclick="crearNoticia()">Nueva Noticia Vacia</button>
+        <button id="me" onclick="obtenerNoticia()">Nueva Noticia Vacia</button>
         <div id="main-noticias-container" class="noticias">
-            
+
             <div class="noticia" data-nro="1">
                 <div class="noticia-head">
                     <p class="noticia-categoria">Diario La Mañana Neuquén</p>
@@ -143,14 +145,14 @@
 </body>
 <script src="js/scroller.js"></script>
 <script>
-    const buscarNoticias = async ()=> {
-        let noticias = await fetch('http://localhost:5000/noticias');
-        noticias = await noticias.json();
-        console.log(noticias.noticias);
+    const obtenerNoticia = async () => {
+        let noticia = await fetch('http://localhost:5000/noticias/1');
+        noticia = await noticia.json();
+        crearNoticia(noticia.noticia);
     }
-    
 
-    const crearNoticia = () => {
+
+    const crearNoticia = ({ titulo, subtitulo, contenido, img }) => {
         const newNoticia = document.createElement("div");
         newNoticia.className = "noticia";
         const noticiaHead = document.createElement("div");
@@ -159,9 +161,9 @@
         noticiaHeadCategoria.className = "noticia-categoria";
         noticiaHeadCategoria.appendChild(document.createTextNode('Example Category'));
         const noticiaHeadH1 = document.createElement("h1");
-        noticiaHeadH1.appendChild(document.createTextNode('Example Title'));
+        noticiaHeadH1.appendChild(document.createTextNode(titulo));
         const noticiaHeadH2 = document.createElement("h2");
-        noticiaHeadH2.appendChild(document.createTextNode('Example Subtitle'));
+        noticiaHeadH2.appendChild(document.createTextNode(subtitulo));
         noticiaHead.appendChild(noticiaHeadCategoria);
         noticiaHead.appendChild(noticiaHeadH1);
         noticiaHead.appendChild(noticiaHeadH2);
@@ -170,9 +172,9 @@
         const noticiaContent = document.createElement("div");
         noticiaContent.className = "noticia-content";
         const noticiaContentImg = document.createElement("img");
-        noticiaContentImg.setAttribute('alt', 'News Image');
+        noticiaContentImg.setAttribute('alt', img);
         const noticiaContentP = document.createElement("p");
-        noticiaContentP.appendChild(document.createTextNode('lorem ipsum 80'));
+        noticiaContentP.appendChild(document.createTextNode(contenido));
         noticiaContent.appendChild(noticiaContentImg);
         noticiaContent.appendChild(noticiaContentP);
         newNoticia.appendChild(noticiaContent);
@@ -180,4 +182,5 @@
         document.getElementById('main-noticias-container').appendChild(newNoticia);
     }
 </script>
+
 </html>
