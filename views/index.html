@@ -26,7 +26,7 @@
                     <a href="lunes 19-10-2020.html">Lunes 19/10</a>
                 </div>
                 <div class="menu-item seleccionado">
-                    <a href="martes 20-10-2020.html">Martes 20/10</a>
+                    <a href="#" onclick="obtenerNoticiasDelDia(2)">Martes 20/10</a>
                 </div>
                 <div class="menu-item">
                     <a href="miercoles 21-10-2020.html">Miercoles 21/10</a>
@@ -78,77 +78,22 @@
         </div>
         <button id="me" onclick="obtenerNoticia()">Nueva Noticia Vacia</button>
         <div id="main-noticias-container" class="noticias">
-
-            <div class="noticia" data-nro="1">
-                <div class="noticia-head">
-                    <p class="noticia-categoria">Diario La Mañana Neuquén</p>
-                    <h1>Titulo
-                    </h1>
-                    <h2>Subtitulo</h2>
-                </div>
-                <div class="noticia-content">
-                    <p>
-                        Un parrafo
-                    </p>
-                    <img src="./imagenes/" alt="">
-                    <p>
-                        Otro parrafo
-                    </p>
-                </div>
-                <br>
-                <a href="" target="_blank">Click para
-                    leer noticia completa</a>
-            </div>
-            <div class="noticia" data-nro="2">
-                <div class="noticia-head">
-                    <p class="noticia-categoria">Diario Clarín</p>
-                    <h1>Titulo
-                    </h1>
-                    <h2>Subtitulo</h2>
-                </div>
-                <div class="noticia-content">
-                    <p>
-                        Un parrafo
-                    </p>
-                    <img src="./imagenes/" alt="">
-                    <p>
-                        Otro parrafo
-                    </p>
-                </div>
-                <br>
-                <a href="" target="_blank">Click para
-                    leer noticia completa</a>
-            </div>
-            <div class="noticia" data-nro="3">
-                <div class="noticia-head">
-                    <p class="noticia-categoria">Diario La Nación</p>
-                    <h1>Titulo
-                    </h1>
-                    <h2>Subtitulo</h2>
-                </div>
-                <div class="noticia-content">
-                    <p>
-                        Un parrafo
-                    </p>
-                    <img src="./imagenes/" alt="">
-                    <p>
-                        Otro parrafo
-                    </p>
-                </div>
-                <br>
-                <a href="" target="_blank">Click para
-                    leer noticia completa</a>
-            </div>
         </div>
         <footer class="pie">Derechos Reservados. 2020.</footer>
     </div><!-- /FONDO MATE -->
 </body>
 <script src="js/scroller.js"></script>
 <script>
-    const obtenerNoticia = async () => {
-        let noticia = await fetch('http://localhost:5000/noticias/1');
-        noticia = await noticia.json();
-        crearNoticia(noticia.noticia);
+    const obtenerNoticiasDelDia = async (dia) => {
+        let noticiasObtenidas = await fetch('http://localhost:5000/noticias/dia/'+dia);
+        console.log(noticiasObtenidas);
+        let resultados = await noticiasObtenidas.json();
+        console.log(resultados);
+        resultados = await resultados.resultado;
+        console.log(resultados);
+        resultados.forEach((noticia) => {
+            crearNoticia(noticia);
+        });
     }
 
 

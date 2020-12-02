@@ -7,6 +7,8 @@ const noticiasRoute = require('./routes/noticias_route');
 const app = express()
 const port = 5000
 
+app.use(express.json());
+
 // Static Files
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + 'public/css'))
