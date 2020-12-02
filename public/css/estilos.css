@@ -3,7 +3,7 @@
 		color: #c4f5ff;
 	}
 	body {
-		background-image: url("fondo2.jpg");
+		background-image: url("fondo-papel.jpg");
 		background-repeat: repeat-y;
 		background-position: center;
 		background-size: cover;
@@ -20,16 +20,15 @@
 	body::-webkit-scrollbar-thumb{
 		background: #a60a12;
 		border-radius: 5px;
-		&:active{
-			background:#a60a12;
-		};
+
 	}
 
 	#up-button{
 		position: fixed;
 		bottom: 20px;
 		right: 30px;
-		background-color: orange;
+		background-color: #800f05;
+		color: white;
 		font-weight: bold;
 		font-size: 1.5em;
 		border-radius: 50%;
@@ -51,7 +50,7 @@
 		box-shadow: 0px 0px 10px black;
 	}
 	.noticia-head .noticia-categoria{
-		color: orange;
+		color:#800f05;
 		font-weight: bold;
 		font-size: 1em;
 	}
@@ -82,7 +81,8 @@
 		text-align: center;
 	}
 	.tabla-noticias thead{
-		background-color: orange;
+		background-color:#800f05;
+		color: white;
 	}
 	.tabla-noticias tbody{
 		cursor: pointer;
@@ -125,12 +125,12 @@
 
 	.fondo-mate {
 		margin: 0 auto;
-		width: 85%;
+		width: 60%;
 		min-height: 140%;
 		display: flex;
 		flex-direction: column;
 		background-color: grey;
-		background-image: url("fondo.jpg");
+		background-image: url("fondo-mate.jpg");
 		background-repeat: repeat-y;
 	}
 
@@ -157,6 +157,7 @@
 	}
 	.navegacion .title{
 		background-color: #800f05;
+		color: white;
 		text-align: center;
 		font-size: 2em;
 		padding: 2px;
@@ -183,8 +184,12 @@
 
 	.menu-item.seleccionado{
 		padding: 10px;
-		background-color:rgb(245, 204, 42);
+		background-color:rgb(150, 14, 2);
 		font-weight: bold;
+	}
+
+	.menu-item.seleccionado a{
+		color: white;
 	}
 	footer{
 		width: 100%;
