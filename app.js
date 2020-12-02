@@ -12,23 +12,14 @@ app.use(express.json());
 // Static Files
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + 'public/css'))
-app.use('/noticias', noticiasRoute);
+//app.use('/images', express.static(__dirname + 'public/images'))
 
-// Set Templating Engine
-//app.use(expressLayouts)
-//app.set('layout', './layouts/full-width')
-//app.set('view engine', 'ejs')
+//API
+app.use('/api/noticias', noticiasRoute);
 
-// Routes
 app.get('', (req, res) => {
-    //console.log(__dirname);
-    //res.render('index', { title: 'Home Page'})
+
     res.sendFile(path.join(__dirname + '/views/index.html'))
 })
-/*
-app.get('/about', (req, res) => {
-    res.render('about', { title: 'About Page', layout: './layouts/sidebar' })
-})
-*/
 // Listen on Port 5000
 app.listen(port, () => console.info(`App listening on port ${port}`))

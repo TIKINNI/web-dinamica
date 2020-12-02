@@ -23,26 +23,27 @@
                     <a href="home.html">INICIO</a>
                 </div>
                 <div class="menu-item">
-                    <a href="lunes 19-10-2020.html">Lunes 19/10</a>
-                </div>
-                <div class="menu-item seleccionado">
-                    <a href="#" onclick="obtenerNoticiasDelDia(2)">Martes 20/10</a>
+                    <a onclick="obtenerNoticiasDelDia(this, 1)">Lunes 19/10</a>
                 </div>
                 <div class="menu-item">
-                    <a href="miercoles 21-10-2020.html">Miércoles 21/10</a>
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 2)">Martes 20/10</a>
                 </div>
                 <div class="menu-item">
-                    <a href="jueves 22-10-2020.html">Jueves 22/10</a>
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 3)">Miércoles 21/10</a>
                 </div>
                 <div class="menu-item">
-                    <a href="viernes 23-10-2020.html">Viernes 23/10</a>
+                    <a href="#" onclick="obtenerNoticiasDelDia(this, 4)">Jueves 22/10</a>
                 </div>
                 <div class="menu-item">
-                    <a href="sabado 24-10-2020.html">Sábado 24/10</a>
+                    <a href="#" onclick="obtenerNoticiasDelDia(5)">Viernes 23/10</a>
                 </div>
                 <div class="menu-item">
-                    <a href="domingo 25-10-2020.html">Domingo 25/10</a>
+                    <a href="#" onclick="obtenerNoticiasDelDia(6)">Sábado 24/10</a>
                 </div>
+                <div class="menu-item">
+                    <a href="#" onclick="obtenerNoticiasDelDia(7)">Domingo 25/10</a>
+                </div>
+                <!--
                 <div class="menu-item">
                     <a href="lunes 26-10-2020.html">Lunes 26/10</a>
                 </div>
@@ -52,6 +53,7 @@
                 <div class="menu-item">
                     <a href="miercoles 28-10-2020.html">Miércoles 28/10</a>
                 </div>
+                -->
             </div>
         </div>
         <div class="tabla-noticias-container">
@@ -84,27 +86,48 @@
 </body>
 <script src="js/scroller.js"></script>
 <script>
-    const obtenerNoticiasDelDia = async (dia) => {
-        let noticiasObtenidas = await fetch('http://localhost:5000/noticias/dia/'+dia);
-        console.log(noticiasObtenidas);
+    const obtenerNoticiasDelDia = async (elem, dia) => {
+        let noticiasObtenidas = await fetch('http://localhost:5000/api/noticias/dia/'+dia);
         let resultados = await noticiasObtenidas.json();
-        console.log(resultados);
         resultados = await resultados.resultado;
-        console.log(resultados);
+
+        eliminarHijosDe(document.getElementById("main-noticias-container"));
+        
         resultados.forEach((noticia) => {
             crearNoticia(noticia);
         });
+
+        toggleSeleccionado(elem);
     }
 
+    const eliminarHijosDe = (nodo) => {
+        //Elimina los nodos hijo de un nodo determinado.
+        const parent = nodo;
+        while (parent.firstChild) {
+            parent.firstChild.remove();
+        }
+    }
 
-    const crearNoticia = ({ titulo, subtitulo, contenido, img }) => {
+    const toggleSeleccionado = (elem) => {
+        //Toggle de la clase 'seleccionado' sobre una lista de items de clase 'menu-items', solo queda con clase 'seleccionado' el
+        //elemento pasado por parametro
+        const menuItems = document.getElementsByClassName('menu-item');
+        for (menu of menuItems) {
+            console.log(menu.classList);
+            menu.classList.remove('seleccionado');
+        }
+        elem.closest('.menu-item').classList.add('seleccionado');
+    }
+
+    const crearNoticia = ({ fuente, titulo, subtitulo, contenido, imagen }) => {
+        //Crea los elementos del DOM necesarios para mostrar una noticia completa, recibe por parametro un objeto "tipo noticia"
         const newNoticia = document.createElement("div");
         newNoticia.className = "noticia";
         const noticiaHead = document.createElement("div");
         noticiaHead.className = "noticia-head";
         const noticiaHeadCategoria = document.createElement("p");
         noticiaHeadCategoria.className = "noticia-categoria";
-        noticiaHeadCategoria.appendChild(document.createTextNode('Example Category'));
+        noticiaHeadCategoria.appendChild(document.createTextNode(fuente));
         const noticiaHeadH1 = document.createElement("h1");
         noticiaHeadH1.appendChild(document.createTextNode(titulo));
         const noticiaHeadH2 = document.createElement("h2");
@@ -117,7 +140,7 @@
         const noticiaContent = document.createElement("div");
         noticiaContent.className = "noticia-content";
         const noticiaContentImg = document.createElement("img");
-        noticiaContentImg.setAttribute('alt', img);
+        noticiaContentImg.setAttribute('src', imagen);
         const noticiaContentP = document.createElement("p");
         noticiaContentP.appendChild(document.createTextNode(contenido));
         noticiaContent.appendChild(noticiaContentImg);

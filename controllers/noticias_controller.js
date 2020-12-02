@@ -1,37 +1,4 @@
-const noticias = [
-        {
-            id: 1,
-            titulo: 'Volvio a subir el dolar',
-            subtitulo: 'Otra vez se fue al carajo todo',
-            contenido: 'La gente pide que les devuelvan la guita, terrible bardo.',
-            img: 'gente pidiendo plata',
-            dia: 2,
-        },
-        {
-            id: 2,
-            titulo: 'VolvioAAAAAAAAAA',
-            subtitulo: 'Otra vez se fue al carajo todo',
-            contenido: 'La gente pide que les devuelvan la guita, terrible bardo.',
-            img: 'gente pidiendo plata',
-            dia: 2,
-    },
-        {
-            id: 3,
-            titulo: 'VolvioBBBBBBr',
-            subtitulo: 'Otra vez se fue al carajo todo',
-            contenido: 'La gente pide que les devuelvan la guita, terrible bardo.',
-            img: 'gente pidiendo plata',
-            dia: 3,
-    },
-        {
-            id: 4,
-            titulo: 'Volvio CCCCCCCC',
-            subtitulo: 'Otra vez se fue al carajo todo',
-            contenido: 'La gente pide que les devuelvan la guita, terrible bardo.',
-            img: 'gente pidiendo plata',
-            dia: 2,
-        },
-];
+const noticias = require('../database/database');
 let next_id = 5;
 const incrementarId = () => {
     next_id++;
@@ -74,9 +41,10 @@ function getNoticiasDelDia(req, res) {
 function addNoticia(req, res) {
     //console.log(req.body);
 
-    const { titulo, subtitulo, contenido, imagen } = req.body;
+    const { fuente, titulo, subtitulo, contenido, imagen } = req.body;
     const noticiaNueva = {
         id: next_id,
+        fuente,
         titulo,
         subtitulo,
         contenido,
@@ -117,10 +85,12 @@ function updateNoticia(req, res) {
         const noticia = noticias.find(noticia => noticia.id == req.params.id);
         //console.log(req.params);
         if (noticia) {
-            const { title, content, img } = req.body;
-            noticia.title = title;
-            noticia.content = content;
-            noticia.img = img;
+            const { fuente, titulo, subtitulo, contenido, imagen } = req.body;
+            noticia.fuente = fuente;
+            noticia.titulo = titulo;
+            noticia.subtitulo = subtitulo;
+            noticia.contenido = contenido;
+            noticia.imagen = imagen;
             res.status(200).json({
                 message: 'success',
                 noticia: noticia,
