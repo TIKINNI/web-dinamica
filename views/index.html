@@ -20,7 +20,7 @@
             <p class="title">Navegación</p>
             <div class="menu">
                 <div class="menu-item">
-                    <a href="home.html">INICIO</a>
+                    <a href="#" onclick="crearHome(this)">INICIO</a>
                 </div>
                 <div class="menu-item">
                     <a onclick="obtenerNoticiasDelDia(this, 1)">Lunes 19/10</a>
@@ -52,17 +52,6 @@
                 <div class="menu-item">
                     <a href="#" onclick="obtenerNoticiasDelDia(this, 10)">Miércoles 28/10</a>
                 </div>
-                <!--
-                <div class="menu-item">
-                    <a href="lunes 26-10-2020.html">Lunes 26/10</a>
-                </div>
-                <div class="menu-item">
-                    <a href="martes 27-10-2020.html">Martes 27/10</a>
-                </div>
-                <div class="menu-item">
-                    <a href="miercoles 28-10-2020.html">Miércoles 28/10</a>
-                </div>
-                -->
             </div>
         </div>
         <div class="tabla-noticias-container">
@@ -87,77 +76,11 @@
                 </tbody>
             </table>
         </div>
-        <button id="me" onclick="obtenerNoticia()">Nueva Noticia Vacia</button>
         <div id="main-noticias-container" class="noticias">
         </div>
         <footer class="pie">Derechos Reservados. 2020.</footer>
     </div><!-- /FONDO MATE -->
 </body>
 <script src="js/scroller.js"></script>
-<script>
-    const obtenerNoticiasDelDia = async (elem, dia) => {
-        let noticiasObtenidas = await fetch('http://localhost:5000/api/noticias/dia/'+dia);
-        let resultados = await noticiasObtenidas.json();
-        resultados = await resultados.resultado;
-
-        eliminarHijosDe(document.getElementById("main-noticias-container"));
-        
-        resultados.forEach((noticia) => {
-            crearNoticia(noticia);
-        });
-
-        toggleSeleccionado(elem);
-    }
-
-    const eliminarHijosDe = (nodo) => {
-        //Elimina los nodos hijo de un nodo determinado.
-        const parent = nodo;
-        while (parent.firstChild) {
-            parent.firstChild.remove();
-        }
-    }
-
-    const toggleSeleccionado = (elem) => {
-        //Toggle de la clase 'seleccionado' sobre una lista de items de clase 'menu-items', solo queda con clase 'seleccionado' el
-        //elemento pasado por parametro
-        const menuItems = document.getElementsByClassName('menu-item');
-        for (menu of menuItems) {
-            console.log(menu.classList);
-            menu.classList.remove('seleccionado');
-        }
-        elem.closest('.menu-item').classList.add('seleccionado');
-    }
-
-    const crearNoticia = ({ fuente, titulo, subtitulo, contenido, imagen }) => {
-        //Crea los elementos del DOM necesarios para mostrar una noticia completa, recibe por parametro un objeto "tipo noticia"
-        const newNoticia = document.createElement("div");
-        newNoticia.className = "noticia";
-        const noticiaHead = document.createElement("div");
-        noticiaHead.className = "noticia-head";
-        const noticiaHeadCategoria = document.createElement("p");
-        noticiaHeadCategoria.className = "noticia-categoria";
-        noticiaHeadCategoria.appendChild(document.createTextNode(fuente));
-        const noticiaHeadH1 = document.createElement("h1");
-        noticiaHeadH1.appendChild(document.createTextNode(titulo));
-        const noticiaHeadH2 = document.createElement("h2");
-        noticiaHeadH2.appendChild(document.createTextNode(subtitulo));
-        noticiaHead.appendChild(noticiaHeadCategoria);
-        noticiaHead.appendChild(noticiaHeadH1);
-        noticiaHead.appendChild(noticiaHeadH2);
-        newNoticia.appendChild(noticiaHead);
-
-        const noticiaContent = document.createElement("div");
-        noticiaContent.className = "noticia-content";
-        const noticiaContentImg = document.createElement("img");
-        noticiaContentImg.setAttribute('src', imagen);
-        const noticiaContentP = document.createElement("p");
-        noticiaContentP.appendChild(document.createTextNode(contenido));
-        noticiaContent.appendChild(noticiaContentImg);
-        noticiaContent.appendChild(noticiaContentP);
-        newNoticia.appendChild(noticiaContent);
-
-        document.getElementById('main-noticias-container').appendChild(newNoticia);
-    }
-</script>
-
+<script src="js/main.js"></script>
 </html>

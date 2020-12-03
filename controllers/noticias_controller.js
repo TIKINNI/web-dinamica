@@ -1,5 +1,5 @@
 const noticias = require('../database/database');
-let next_id = 5;
+let next_id = 31;
 const incrementarId = () => {
     next_id++;
 }
@@ -41,14 +41,15 @@ function getNoticiasDelDia(req, res) {
 function addNoticia(req, res) {
     //console.log(req.body);
 
-    const { fuente, titulo, subtitulo, contenido, imagen } = req.body;
+    const { fuente, titulo, vinculo, contenido, imagen, dia } = req.body;
     const noticiaNueva = {
         id: next_id,
         fuente,
         titulo,
-        subtitulo,
+        vinculo,
         contenido,
-        imagen
+        imagen,
+        dia
     }
     incrementarId();
     noticias.push(noticiaNueva);
@@ -85,12 +86,13 @@ function updateNoticia(req, res) {
         const noticia = noticias.find(noticia => noticia.id == req.params.id);
         //console.log(req.params);
         if (noticia) {
-            const { fuente, titulo, subtitulo, contenido, imagen } = req.body;
+            const { fuente, titulo, vinculo, contenido, imagen, dia } = req.body;
             noticia.fuente = fuente;
             noticia.titulo = titulo;
-            noticia.subtitulo = subtitulo;
+            noticia.vinculo = vinculo;
             noticia.contenido = contenido;
             noticia.imagen = imagen;
+            noticia.dia = dia;
             res.status(200).json({
                 message: 'success',
                 noticia: noticia,

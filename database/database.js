@@ -270,37 +270,5 @@ const database = [
         vinculo:'https://www.lanacion.com.ar/el-mundo/erdogan-anuncia-boicot-productos-franceses-escala-choque-nid2490435',
         dia: 10
     },
-    {
-        id: 31,
-        fuente: 'La Nacion',
-        titulo: 'Volvio a subir el dolar',
-        subtitulo: 'Otra vez se fue al carajo todo',
-        contenido: 'La gente pide que les devuelvan la guita, terrible bardo.',
-        imagen: `${BASE_URL}01022020.jpg`,
-        dia: 11,
-    },
-    {
-        id: 32,
-        fuente: 'Clarin',
-        titulo: 'Quilombos en paises limitrofes',
-        subtitulo: 'Otra vez se fue al carajo todo pero en otro pais',
-        contenido: 'La gente pide que les devuelvan la guita, terrible bardo. Quemaron a un pelado.',
-        imagen: `${BASE_URL}02022020.jpg`,
-        dia: 11,
-    },
 ]
 module.exports = database;
-
-/*
-
-{
-    id:,
-    fuente:'',
-    titulo:'',
-    contenido:'',
-    imagen:``,
-    vinculo:'',
-    dia: 
-},
-
-*/
