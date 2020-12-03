@@ -71,9 +71,9 @@ const crearNoticia = ({ fuente, titulo, vinculo, contenido, imagen }) => {
 };
 
 const crearHome = (elem) => {
-    eliminarHijosDe(document.getElementById("main-noticias-container"));
-    toggleSeleccionado(elem);
-    const HOME_IMG = "http://localhost:5000/images/home/guy-laptop.png";
+  eliminarHijosDe(document.getElementById("main-noticias-container"));
+  toggleSeleccionado(elem);
+  const HOME_IMG = "http://localhost:5000/images/home/guy-laptop.png";
   //Crea los elementos del DOM necesarios para mostrar una noticia completa, recibe por parametro un objeto "tipo noticia"
   const newNoticia = document.createElement("div");
   newNoticia.className = "noticia";
@@ -91,8 +91,8 @@ const crearHome = (elem) => {
     document.createTextNode("¡Bienvenido a Kiosco A-Diario!")
   );
   const noticiaContentImg = document.createElement("img");
-    noticiaContentImg.setAttribute("src", HOME_IMG);
-    noticiaContentImg.style.width = "150px";
+  noticiaContentImg.setAttribute("src", HOME_IMG);
+  noticiaContentImg.style.width = "150px";
   const noticiaContentP = document.createElement("p");
   noticiaContentP.appendChild(
     document.createTextNode(

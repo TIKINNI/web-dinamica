@@ -23,11 +23,17 @@ function getNoticia(req, res) {
 }
 
 function getNoticias(req, res) {
-    //console.log("HOLA!");
-    //console.log(req.headers);
+    let result = noticias;
+    let { cantidad, from } = req.query;
+    if (cantidad && from) {
+        cantidad = parseInt(cantidad);
+        from = parseInt(from);
+        result = noticias.slice(from, from+cantidad);
+    }
+    
     res.status(200).json({
         message: 'success',
-        noticias,
+        noticias: result,
     });
 }
 function getNoticiasDelDia(req, res) {
